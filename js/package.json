@@ -1,0 +1,28 @@
+{
+  "name": "@liquid-labs/firewrap",
+  "version": "0.0.1",
+  "description": "Thin client-side wrapper around Google Firebase library.",
+  "files": [
+    "firebase.js",
+    "./fireauth.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liquid-Labs/catalyst-firewrap.git"
+  },
+  "keywords": [
+    "firebase"
+  ],
+  "author": "Zane Rockenbaugh <zane@liquid-labs.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liquid-Labs/catalyst-firewrap/issues"
+  },
+  "homepage": "https://github.com/Liquid-Labs/catalyst-firewrap#readme",
+  "dependencies": {
+    "firebase": "^5.5.1"
+  }
+}
