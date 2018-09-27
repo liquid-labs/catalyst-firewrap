@@ -1,10 +1,10 @@
 {
-  "name": "@liquid-labs/firewrap",
+  "name": "@liquid-labs/catalyst-firewrap",
   "version": "0.0.1",
   "description": "Thin client-side wrapper around Google Firebase library.",
+  "main": "js/index.js",
   "files": [
-    "firebase.js",
-    "./fireauth.js"
+    "js/"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
