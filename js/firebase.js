@@ -6,6 +6,7 @@ import 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 
+let start = true;
 [
   'REACT_APP_FIREBASE_API_KEY',
   'REACT_APP_FIREBASE_AUTH_DOMAIN',
@@ -17,6 +18,7 @@ import 'firebase/database'
 ].forEach(param => {
   if (process.env[param] === undefined) {
     console.error(`Did not find expected configuration parameter '${param}'. Add it to the appropirate '.env' file.`)
+    start = false
   }
 })
 
@@ -29,9 +31,9 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 }
 
-if (!firebase.apps.length) {
+if (!firebase.apps.length && start) {
   firebase.initializeApp(firebaseConfig)
 }
 
-export const auth = firebase.auth()
-export const db = firebase.database()
+export const auth = start && firebase.auth()
+export const db = start && firebase.database()
