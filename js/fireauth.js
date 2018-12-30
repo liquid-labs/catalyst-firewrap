@@ -6,9 +6,9 @@ import { auth, db } from './firebase'
 
 export const createUserWithEmailAndPassword = (email, password, username) =>
   auth.createUserWithEmailAndPassword(email, password)
-    .then(authUser => {
+    .then(authUser =>
       db.ref(`users/${authUser.uid}`).set({name: username})
-    })
+    )
 
 export const signInWithEmailAndPassword = (email, password) =>
   auth.signInWithEmailAndPassword(email, password)
