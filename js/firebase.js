@@ -2,9 +2,9 @@
 // to use the appropriate wrapper interface, though it's OK to access these
 // directly if necessary.
 import firebase from 'firebase/app'
-import 'firebase/app'
+// Imported for setup side-effects
 import 'firebase/auth'
-import 'firebase/database'
+import 'firebase/firestore'
 
 const firebaseParams = [
   'REACT_APP_FIREBASE_API_KEY',
@@ -38,4 +38,4 @@ if (!firebase.apps.length && start) {
 }
 
 export const auth = start && firebase.auth()
-export const db = start && firebase.database()
+export const db = start && firebase.firestore()
