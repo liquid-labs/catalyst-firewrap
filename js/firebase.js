@@ -38,4 +38,5 @@ if (!firebase.apps.length && start) {
 }
 
 export const auth = start && firebase.auth()
+// https://firebase.google.com/docs/firestore/
 export const db = start && firebase.firestore()
