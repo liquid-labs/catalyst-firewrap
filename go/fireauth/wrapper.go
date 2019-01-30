@@ -3,7 +3,7 @@ package fireauth
 import (
   "firebase.google.com/go/auth"
 
-  "github.com/Liquid-Labs/go-webapp-tools/rest"
+  "github.com/Liquid-Labs/go-rest/rest"
 )
 
 func (ab *ScopedClient) GetUser(subject string) (*auth.UserRecord, rest.RestError) {

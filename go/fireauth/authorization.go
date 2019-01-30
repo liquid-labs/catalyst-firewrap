@@ -6,7 +6,7 @@ import (
 
   "firebase.google.com/go/auth"
 
-  "github.com/Liquid-Labs/go-webapp-tools/rest"
+  "github.com/Liquid-Labs/go-rest/rest"
 )
 
 func (ab *ScopedClient) CheckAuthorizedAll(reqClaims ...string) (*auth.Token, rest.RestError) {

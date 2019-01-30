@@ -2,17 +2,16 @@ package fireauth
 
 import (
   "net/http"
+  "os"
   "strings"
 
   "firebase.google.com/go/auth"
   "firebase.google.com/go"
 
-  "github.com/Liquid-Labs/catalyst-firewrap/go"
-  "github.com/Liquid-Labs/go-webapp-tools/rest"
+  "catalyst-firewrap/firewrap"
+  "github.com/Liquid-Labs/go-rest/rest"
 
   "golang.org/x/net/context"
-
-  "google.golang.org/appengine"
 )
 
 type ScopedClient struct {
@@ -25,7 +24,8 @@ func GetClient(r *http.Request) (*ScopedClient, rest.RestError) {
   // Initialize the app with a service account, granting admin privileges
 	var app *firebase.App
 	var err error
-	if appengine.IsDevAppServer() || firewrap.Local {
+  var nodeEnv = os.Getenv("NODE_ENV")
+	if nodeEnv != "production" || firewrap.Local {
 		app, err = firebase.NewApp(r.Context(), firewrap.Config, firewrap.ClientOption)
 	} else {
 		app, err = firebase.NewApp(r.Context(), firewrap.Config)
