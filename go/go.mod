@@ -1,4 +1,4 @@
-module catalyst-firewrap
+module github.com/Liquid-Labs/catalyst-firewrap
 
 require (
 	firebase.google.com/go v3.6.0+incompatible
