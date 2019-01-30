@@ -8,7 +8,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-const credsKey string = "CATALYST_FIREWRAP_FIREBASE_CREDS"
+const credsKey string = "FIREBASE_CREDS_FILE"
 var Config *firebase.Config
 var ClientOption option.ClientOption
 var Local bool = false
