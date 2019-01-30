@@ -8,7 +8,7 @@ import (
   "firebase.google.com/go/auth"
   "firebase.google.com/go"
 
-  "catalyst-firewrap/firewrap"
+  "github.com/Liquid-Labs/catalyst-firewrap/go/firewrap"
   "github.com/Liquid-Labs/go-rest/rest"
 
   "golang.org/x/net/context"
