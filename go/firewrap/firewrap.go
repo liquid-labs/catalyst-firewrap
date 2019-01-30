@@ -8,7 +8,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-const credsKey string = "FIREBASE_CREDS_FILE"
+const apiKey string = "FIREBASE_API_KEY"
 var Config *firebase.Config
 var ClientOption option.ClientOption
 var Local bool = false
@@ -20,9 +20,9 @@ func Setup(firebaseUrl string)  {
 	// Fetch the service account key JSON file contents
 	var envPurpose = os.Getenv(`NODE_ENV`)
 	if envPurpose != "production" || Local {
-		localFirebaseCredsFile := os.Getenv(credsKey)
+		localFirebaseCredsFile := os.Getenv(apiKey)
 		if localFirebaseCredsFile == "" {
-			log.Panicf("'%s' required for local operation.", credsKey)
+			log.Panicf("'%s' required for local operation.", apiKey)
 		}
 		ClientOption = option.WithCredentialsFile(localFirebaseCredsFile)
 	}
