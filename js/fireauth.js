@@ -1,37 +1,40 @@
-// 'auth' and 'db' are the underlying, raw firebase clients. Note, our exported
-// methods follow (but are not always exactly the saame as) the underlying
-// interface, and sometimes wrap a little extra business logic sometimes adding
-// a little extra.
-import { auth, db } from './firebase'
+// 'auth' is the underlying firebase client. Note, our exported methods follow
+// but are not always exactly the saame as the underlying interface.
+import { auth } from './firebase'
 
-export const createUserWithEmailAndPassword = (email, password, username) =>
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(response => {
-      if (!response) {
-        console.log("Response: ", response)
-        throw new Error("Did not get expected response.")
-      }
-      const userData = response.user
-      if (!userData || !userData.uid) {
-        console.log("Response: ", response)
-        throw new Error("Did not get expected response.")
-      }
-      return db.collection("users").doc(userData.uid).set({
-        username: username
-      })
-    })
+const createUserWithEmailAndPassword = async(email, password, displayName) => {
+  const userCredentials = await
+    auth.createUserWithEmailAndPassword(email, password)
+  if (displayName) {
+    const authUser = userCredentials.user
+    await authUser.updateProfile({displayName : displayName})
+  }
+  console.log('userCredentials now: ', userCredentials)
+  return userCredentials
+}
 
-export const signInWithEmailAndPassword = (email, password) =>
+const signInWithEmailAndPassword = (email, password) =>
   auth.signInWithEmailAndPassword(email, password)
 
-export const signOut = () => auth.signOut()
+// Note we use Catalyst standard 'log out'
+const logOut = () => auth.signOut()
 
-export const sendPasswordResetEmail = (email) =>
+const sendPasswordResetEmail = (email) =>
   auth.sendPasswordResetEmail(email)
 
 // Note, the interface for this one is a little different.
-export const updatePassword = (password) =>
+const updatePassword = (password) =>
   auth.currentUser.updatePassword(password)
 
-export const onAuthStateChanged = (handler/*(authUser) - null on sign out*/) =>
+const onAuthStateChanged = (handler/*(authUser) - null on sign out*/) =>
   auth.onAuthStateChanged(handler)
+
+
+export {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  logOut,
+  sendPasswordResetEmail,
+  updatePassword,
+  onAuthStateChanged,
+}

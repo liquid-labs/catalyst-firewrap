@@ -2,13 +2,16 @@
   "name": "@liquid-labs/catalyst-firewrap",
   "version": "2.0.0-prototype.0",
   "description": "Thin client-side wrapper around Google Firebase library.",
-  "main": "js/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "files": [
-    "js/"
+    "dist/"
   ],
   "scripts": {
-    "build": "cd go && go build ./...",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "catalyst-scripts build",
+    "test": "catalyst-scripts test",
+    "lint": "catalyst-scripts lint",
+    "lint-fix": "catalyst-scripts lint-fix"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   },
   "homepage": "https://github.com/Liquid-Labs/catalyst-firewrap#readme",
   "dependencies": {
+    "@liquid-labs/catalyst-scripts": "^1.0.0-alpha.13",
     "firebase": "^5.5.1"
   }
 }
