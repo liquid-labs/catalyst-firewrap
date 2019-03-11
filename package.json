@@ -1,6 +1,6 @@
 {
   "name": "@liquid-labs/catalyst-firewrap",
-  "version": "2.0.0-prototype.0",
+  "version": "2.0.0-prototype.1",
   "description": "Thin client-side wrapper around Google Firebase library.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
