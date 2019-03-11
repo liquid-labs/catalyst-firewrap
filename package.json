@@ -11,7 +11,8 @@
     "build": "catalyst-scripts build",
     "test": "catalyst-scripts test",
     "lint": "catalyst-scripts lint",
-    "lint-fix": "catalyst-scripts lint-fix"
+    "lint-fix": "catalyst-scripts lint-fix",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
