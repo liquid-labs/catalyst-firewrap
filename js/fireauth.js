@@ -9,7 +9,6 @@ const createUserWithEmailAndPassword = async(email, password, displayName) => {
     const authUser = userCredentials.user
     await authUser.updateProfile({displayName : displayName})
   }
-  console.log('userCredentials now: ', userCredentials)
   return userCredentials
 }
 
