@@ -28,7 +28,9 @@
   },
   "homepage": "https://github.com/Liquid-Labs/catalyst-firewrap#readme",
   "dependencies": {
-    "@liquid-labs/catalyst-scripts": "^1.0.0-alpha.13",
     "firebase": "^5.5.1"
+  },
+  "devDependencies": {
+    "@liquid-labs/catalyst-scripts": "^1.0.0-alpha.18"
   }
 }
