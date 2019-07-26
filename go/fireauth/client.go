@@ -44,7 +44,11 @@ func GetClient(r *http.Request) (*ScopedClient, rest.RestError) {
 
 func (ab *ScopedClient) GetToken() (*auth.Token, rest.RestError) {
 	authHeader := ab.request.Header.Get("Authorization")
+  if authHeader == `` {
+    return nil, nil
+  }
 	tokenString := strings.TrimPrefix(authHeader, "Bearer ")
+  // TODO: use VerifyIDTokenAndCheckRevoked?
 	token, err := ab.client.VerifyIDToken(ab.Context(), tokenString)
 	if err != nil {
 		return nil, rest.AuthorizationError("Could not decode token.", err)
