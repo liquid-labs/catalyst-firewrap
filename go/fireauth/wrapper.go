@@ -3,13 +3,13 @@ package fireauth
 import (
   "firebase.google.com/go/auth"
 
-  "github.com/Liquid-Labs/go-rest/rest"
+  "github.com/Liquid-Labs/terror/go/terror"
 )
 
-func (ab *ScopedClient) GetUser(subject string) (*auth.UserRecord, rest.RestError) {
+func (ab *ScopedClient) GetUser(subject string) (*auth.UserRecord, terror.Terror) {
 	userRecord, err := ab.client.GetUser(ab.Context(), subject)
 	if err != nil {
-		return nil, rest.ServerError("Could not retrieve user record.", err)
+		return nil, terror.ServerError("Could not retrieve user record.", err)
 	}
 
 	return userRecord, nil
