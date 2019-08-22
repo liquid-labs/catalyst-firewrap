@@ -6,10 +6,10 @@ import (
 
   "firebase.google.com/go/auth"
 
-  "github.com/Liquid-Labs/go-rest/rest"
+  "github.com/Liquid-Labs/terror/go/terror"
 )
 
-func (ab *ScopedClient) CheckAuthorizedAll(reqClaims ...string) (*auth.Token, rest.RestError) {
+func (ab *ScopedClient) CheckAuthorizedAll(reqClaims ...string) (*auth.Token, terror.Terror) {
 	token, err := ab.GetToken()
 	if err != nil {
 		return nil, err
@@ -19,14 +19,14 @@ func (ab *ScopedClient) CheckAuthorizedAll(reqClaims ...string) (*auth.Token, re
 	for _, reqClaim := range reqClaims {
 		claim, ok := claims[reqClaim]
 		if !ok || !claim.(bool) {
-			return nil, rest.AuthorizationError(fmt.Sprintf("User '%s' failed to access resource requiring claim '%s'.", token.UID, reqClaim), nil)
+			return nil, terror.AuthorizationError(fmt.Sprintf("User '%s' failed to access resource requiring claim '%s'.", token.UID, reqClaim), nil)
 		}
 	}
 
 	return token, nil
 }
 
-func (ab *ScopedClient) CheckAuthorizedAny(reqClaims ...string) (*auth.Token, rest.RestError) {
+func (ab *ScopedClient) CheckAuthorizedAny(reqClaims ...string) (*auth.Token, terror.Terror) {
 	token, err := ab.GetToken()
 	if err != nil {
 		return nil, err
@@ -44,7 +44,7 @@ func (ab *ScopedClient) CheckAuthorizedAny(reqClaims ...string) (*auth.Token, re
 		}
 	}
 
-	return nil, rest.AuthorizationError(
+	return nil, terror.AuthorizationError(
 		fmt.Sprintf("User '%s' failed to access resource requiring at least one claim '%s'.",
 			 token.UID, strings.Join(reqClaims, ", ")), nil)
 }

@@ -31,6 +31,6 @@
     "firebase": "^5.5.1"
   },
   "devDependencies": {
-    "@liquid-labs/catalyst-scripts": "^1.0.0-alpha.18"
+    "@liquid-labs/catalyst-scripts": "^1.0.0-alpha.24"
   }
 }
